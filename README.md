@@ -23,12 +23,15 @@ require __DIR__ . '/vendor/williamug/versioning/src/functions.php';
 
 // after requiring the function file you can now use the app_versioning() function to display the version of your application
 app_versioning();
+//v1.0.0
 ```
 If you are using Laravel you can use the following code to display the version of your application:
 
 ```php
-
+Williamug\Versioning\Versioning::tag()
+// v1.0.0
 ```
+You can add this piece of code in either your controller or blade views.
 
 ## Testing
 
