@@ -31,7 +31,7 @@ If you are using Laravel you can use the following code to display the version o
 Williamug\Versioning\Versioning::tag()
 // v1.0.0
 ```
-You can add this piece of code in either your controller or blade views.
+You can add the above piece of code in either your controller or blade views.
 
 ## Testing
 
