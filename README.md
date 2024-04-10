@@ -1,7 +1,7 @@
 # Versioning
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/williamug/versioning.svg?style=flat-square)](https://packagist.org/packages/williamug/versioning)
-[![Total Downloads](https://img.shields.io/packagist/dt/williamug/versioning.svg?style=flat-square)](https://packagist.org/packages/williamug/versioning)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/williamug/versioning.svg?style=flat-square)](https://packagist.org/packages/williamug/versioning/stats#major/all)
+[![Total Downloads](https://img.shields.io/packagist/dt/williamug/versioning.svg?style=flat-square)](https://packagist.org/packages/williamug/versioning/stats)
 
 A PHP package to helps you to display the version of your application by applying git version tags
 
