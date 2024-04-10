@@ -16,6 +16,7 @@ composer require williamug/versioning
 
 ## Usage
 
+#### For Vanilla PHP
 If your project is written in vanilla PHP you can use the following code to display the version of your application:
 ```php
 
@@ -25,6 +26,8 @@ require __DIR__ . '/vendor/williamug/versioning/src/functions.php';
 app_versioning();
 //v1.0.0
 ```
+
+#### For Laravel
 If you are using Laravel you can use the following code to display the version of your application:
 
 ```php
