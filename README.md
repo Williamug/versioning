@@ -2,6 +2,10 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/williamug/versioning.svg?style=flat-square)](https://packagist.org/packages/williamug/versioning/stats#major/all)
 [![Total Downloads](https://img.shields.io/packagist/dt/williamug/versioning.svg?style=flat-square)](https://packagist.org/packages/williamug/versioning/stats)
+[![Made With](https://img.shields.io/badge/made_with-php-blue)](/docs/requirements/)
+[![License](https://img.shields.io/packagist/l/williamug/versioning.svg)](https://github.com/williamug/versioning/blob/master/LICENSE.txt)
+
+
 
 A PHP package to helps you to display the version of your application by applying git version tags
 
