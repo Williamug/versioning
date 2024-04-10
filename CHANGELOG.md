@@ -2,6 +2,14 @@
 
 All notable changes to `versioning` will be documented in this file.
 
+## v1.0.2 - 2024-04-10
+
+### What's Changed
+
+* Update badge by @Williamug in https://github.com/Williamug/versioning/pull/7
+
+**Full Changelog**: https://github.com/Williamug/versioning/compare/v1.0.1...v1.0.2
+
 ## v1.0.1 - 2024-04-10
 
 ### What's Changed
