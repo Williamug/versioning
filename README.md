@@ -7,7 +7,7 @@
 
 
 
-A PHP package to helps you to display the version of your application by applying git version tags
+A PHP package to helps you to display the current version of your application by applying git version tags
 
 ## Installation
 
