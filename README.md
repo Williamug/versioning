@@ -1,19 +1,9 @@
-# A PHP package to helps you to display the version of your application by applying git version tags
+# Versioning
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/williamug/versioning.svg?style=flat-square)](https://packagist.org/packages/williamug/versioning)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/williamug/versioning/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/williamug/versioning/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/williamug/versioning/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/williamug/versioning/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/williamug/versioning.svg?style=flat-square)](https://packagist.org/packages/williamug/versioning)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/versioning.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/versioning)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+A PHP package to helps you to display the version of your application by applying git version tags
 
 ## Installation
 
@@ -23,37 +13,21 @@ You can install the package via composer:
 composer require williamug/versioning
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="versioning-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="versioning-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="versioning-views"
-```
 
 ## Usage
 
+If your project is written in vanilla PHP you can use the following code to display the version of your application:
 ```php
-$versioning = new Williamug\Versioning();
-echo $versioning->echoPhrase('Hello, Williamug!');
+
+require __DIR__ . '/vendor/williamug/versioning/src/functions.php';
+
+// after requiring the function file you can now use the app_versioning() function to display the version of your application
+app_versioning();
+```
+If you are using Laravel you can use the following code to display the version of your application:
+
+```php
+
 ```
 
 ## Testing
