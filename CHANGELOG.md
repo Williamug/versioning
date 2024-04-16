@@ -2,6 +2,14 @@
 
 All notable changes to `versioning` will be documented in this file.
 
+## v2.0.0 - 2024-04-16
+
+### What's Changed
+
+* Add a blade directive by @Williamug in https://github.com/Williamug/versioning/pull/10
+
+**Full Changelog**: https://github.com/Williamug/versioning/compare/v1.0.4...v2.0.0
+
 ## v1.0.4 - 2024-04-10
 
 ### What's Changed
