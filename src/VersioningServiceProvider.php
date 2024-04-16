@@ -11,4 +11,14 @@ class VersioningServiceProvider extends PackageServiceProvider
     {
         $package->name('versioning');
     }
+
+     /**
+     * Bootstrap services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Blade::directive('app_version', fn ($money) => "<?php echo exec('git describe --tags --abbrev=0') ?>");
+    }
 }
