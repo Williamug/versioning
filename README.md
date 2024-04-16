@@ -38,7 +38,14 @@ If you are using Laravel you can use the following code to display the version o
 Williamug\Versioning\Versioning::tag()
 // v1.0.0
 ```
-You can add the above piece of code in either your controller or blade views.
+
+#### For Laravel Blade
+If you are using Laravel Blade you can use the following code to display the version of your application:
+```blade
+<div>
+    @app_version()
+</div>
+```
 
 ## Testing
 
