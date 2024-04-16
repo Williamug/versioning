@@ -2,6 +2,7 @@
 
 namespace Williamug\Versioning;
 
+use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -12,7 +13,7 @@ class VersioningServiceProvider extends PackageServiceProvider
         $package->name('versioning');
     }
 
-     /**
+    /**
      * Bootstrap services.
      *
      * @return void
