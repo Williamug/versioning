@@ -2,6 +2,14 @@
 
 All notable changes to `versioning` will be documented in this file.
 
+## v2.0.1 - 2024-04-16
+
+### What's Changed
+
+* Fix bug by @Williamug in https://github.com/Williamug/versioning/pull/11
+
+**Full Changelog**: https://github.com/Williamug/versioning/compare/v2.0.0...v2.0.1
+
 ## v2.0.0 - 2024-04-16
 
 ### What's Changed
