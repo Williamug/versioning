@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="/home/williamdk/sites/versioning/phpunit.xml.dist" tests="2" assertions="4" errors="0" failures="0" skipped="0" time="0.310818">
+    <testsuite name="Williamug Test Suite" tests="2" assertions="4" errors="0" failures="0" skipped="0" time="0.310818">
+      <testsuite name="Tests\ExampleTest" file="tests/ExampleTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.210036">
+        <testcase name="it can test" file="tests/ExampleTest.php::it can test" class="Tests\ExampleTest" classname="Tests.ExampleTest" assertions="1" time="0.210036"/>
+      </testsuite>
+      <testsuite name="Tests\ArchTest" file="tests/ArchTest.php" tests="1" assertions="3" errors="0" failures="0" skipped="0" time="0.100782">
+        <testcase name="it will not use debugging functions" file="tests/ArchTest.php::it will not use debugging functions" class="Tests\ArchTest" classname="Tests.ArchTest" assertions="3" time="0.100782"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
