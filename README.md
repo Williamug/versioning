@@ -43,7 +43,7 @@ Williamug\Versioning\Versioning::tag()
 If you are using Laravel Blade you can use the following code to display the version of your application:
 ```blade
 <div>
-    @app_version()
+    @app_version
 </div>
 ```
 
