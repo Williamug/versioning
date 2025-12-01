@@ -48,12 +48,12 @@
 
 <body>
   <?php
-  require __DIR__ . '/../vendor/autoload.php';
+  require __DIR__.'/../vendor/autoload.php';
 
   use Williamug\Versioning\StandaloneVersioning;
 
   // Configure the versioning
-  StandaloneVersioning::setRepositoryPath(__DIR__ . '/..');
+  StandaloneVersioning::setRepositoryPath(__DIR__.'/..');
   StandaloneVersioning::setCaching(true, 3600);
   StandaloneVersioning::setFallbackVersion('1.0.0');
   ?>
