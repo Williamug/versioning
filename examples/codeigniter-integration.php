@@ -11,39 +11,39 @@ use Williamug\Versioning\UniversalVersioning;
 
 class Versioning
 {
-  protected $cache;
+    protected $cache;
 
-  public function __construct()
-  {
-    // Initialize cache
-    $this->cache = \Config\Services::cache();
+    public function __construct()
+    {
+        // Initialize cache
+        $this->cache = \Config\Services::cache();
 
-    // Configure UniversalVersioning
-    UniversalVersioning::setRepositoryPath(ROOTPATH);
-    UniversalVersioning::setCacheAdapter($this->cache);
-    UniversalVersioning::setFallbackVersion(env('app.version', 'dev'));
-    UniversalVersioning::setCacheTtl(3600);
-  }
+        // Configure UniversalVersioning
+        UniversalVersioning::setRepositoryPath(ROOTPATH);
+        UniversalVersioning::setCacheAdapter($this->cache);
+        UniversalVersioning::setFallbackVersion(env('app.version', 'dev'));
+        UniversalVersioning::setCacheTtl(3600);
+    }
 
-  public function getVersion(): string
-  {
-    return UniversalVersioning::tag();
-  }
+    public function getVersion(): string
+    {
+        return UniversalVersioning::tag();
+    }
 
-  public function getFull(): string
-  {
-    return UniversalVersioning::full();
-  }
+    public function getFull(): string
+    {
+        return UniversalVersioning::full();
+    }
 
-  public function getCommit(): string
-  {
-    return UniversalVersioning::commit();
-  }
+    public function getCommit(): string
+    {
+        return UniversalVersioning::commit();
+    }
 
-  public function clearCache(): void
-  {
-    UniversalVersioning::clearCache();
-  }
+    public function clearCache(): void
+    {
+        UniversalVersioning::clearCache();
+    }
 }
 
 // In your controller (app/Controllers/Home.php):
