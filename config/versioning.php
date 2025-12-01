@@ -1,7 +1,7 @@
 <?php
 
 return [
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Git Repository Path
     |--------------------------------------------------------------------------
@@ -11,9 +11,9 @@ return [
     | directory is located elsewhere.
     |
     */
-  'repository_path' => base_path(),
+    'repository_path' => base_path(),
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Cache Settings
     |--------------------------------------------------------------------------
@@ -22,13 +22,13 @@ return [
     | Cache TTL is specified in seconds.
     |
     */
-  'cache' => [
-    'enabled' => env('VERSIONING_CACHE_ENABLED', true),
-    'ttl' => env('VERSIONING_CACHE_TTL', 3600), // 1 hour
-    'key' => 'app_version',
-  ],
+    'cache' => [
+        'enabled' => env('VERSIONING_CACHE_ENABLED', true),
+        'ttl' => env('VERSIONING_CACHE_TTL', 3600), // 1 hour
+        'key' => 'app_version',
+    ],
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Fallback Version
     |--------------------------------------------------------------------------
@@ -37,9 +37,9 @@ return [
     | when an error occurs during version retrieval.
     |
     */
-  'fallback_version' => env('APP_VERSION', 'dev'),
+    'fallback_version' => env('APP_VERSION', 'dev'),
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Version Format
     |--------------------------------------------------------------------------
@@ -50,9 +50,9 @@ return [
     | - 'full' - Show full git describe output (e.g., v1.0.0-5-abc1234)
     |
     */
-  'format' => env('VERSIONING_FORMAT', 'tag'),
+    'format' => env('VERSIONING_FORMAT', 'tag'),
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Include Prefix
     |--------------------------------------------------------------------------
@@ -61,5 +61,5 @@ return [
     | Set to false to display '1.0.0' instead of 'v1.0.0'
     |
     */
-  'include_prefix' => true,
+    'include_prefix' => true,
 ];
