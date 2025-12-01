@@ -1,0 +1,102 @@
+name: FTP Deployment with Versioning
+
+on:
+  release:
+    types: [published]
+  # Uncomment to also deploy on specific tag patterns:
+  # push:
+  #   tags:
+  #     - "v*.*.*"
+  #     - "v*.*.*-beta*"
+
+jobs:
+  deploy:
+    name: 🎉 Deploy to Production
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 📝 Create version files
+        run: |
+          echo "${{ github.ref_name }}" > version.txt
+          git rev-parse --short HEAD > commit.txt
+          cat > VERSION << EOF
+          Version: ${{ github.ref_name }}
+          Commit: $(git rev-parse --short HEAD)
+          Full Commit: ${{ github.sha }}
+          Date: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          Release: ${{ github.event.release.name || github.ref_name }}
+          Repository: ${{ github.repository }}
+          EOF
+          echo "Created version files:"
+          cat VERSION
+
+      - name: 📂 Sync files to production server
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        timeout-minutes: 40
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Optional: Specify server path
+          # server-dir: /public_html/
+          # Optional: Exclude files/folders
+          # exclude: |
+          #   **/.git*
+          #   **/.git*/**
+          #   **/node_modules/**
+          #   **/tests/**
+          #   **/.env
+
+      - name: 📅 Format release date
+        id: format_date
+        if: always()
+        run: |
+          RELEASE_DATE="${{ github.event.release.published_at || github.event.head_commit.timestamp }}"
+          FORMATTED_DATE=$(date -d "$RELEASE_DATE" +"%d-%m-%Y %H:%M:%S")
+          echo "formatted_date=$FORMATTED_DATE" >> $GITHUB_OUTPUT
+
+      - name: 📧 Send deployment notification
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "${{ github.event.repository.name }} Deployment - ${{ job.status }}"
+          to: ${{ secrets.NOTIFICATION_EMAILS }}
+          from: ${{ secrets.EMAIL_USERNAME }}
+          body: |
+            Hello Team,
+
+            The ${{ github.event.repository.name }} deployment to PRODUCTION has finished.
+
+            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            📊 DEPLOYMENT SUMMARY
+            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+            Status:      ${{ job.status }}
+            Environment: Production
+            Version:     ${{ github.ref_name }}
+            Commit:      ${{ github.sha }}
+            Deployed By: ${{ github.actor }}
+            Date:        ${{ steps.format_date.outputs.formatted_date }}
+
+            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            🔗 LINKS
+            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+            Repository:  ${{ github.server_url }}/${{ github.repository }}
+            Commit:      ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}
+            Release:     ${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ github.ref_name }}
+
+            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+            Best regards,
+            Nugsoft DevOps
