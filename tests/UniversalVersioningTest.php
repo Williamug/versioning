@@ -70,7 +70,7 @@ it('removes prefix when configured', function () {
 
 it('works with psr-16 cache adapter', function () {
     $cache = new class {
-        private $data = []; [];
+        private $data = [];
 
         public function get($key, $default = null)
         {
