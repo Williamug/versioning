@@ -8,29 +8,31 @@ use Williamug\Versioning\VersioningServiceProvider;
 
 class TestCase extends Orchestra
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
+  protected static $latestResponse;
 
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Williamug\\Versioning\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
-    }
+  protected function setUp(): void
+  {
+    parent::setUp();
 
-    protected function getPackageProviders($app)
-    {
-        return [
-            VersioningServiceProvider::class,
-        ];
-    }
+    Factory::guessFactoryNamesUsing(
+      fn(string $modelName) => 'Williamug\\Versioning\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+    );
+  }
 
-    public function getEnvironmentSetUp($app)
-    {
-        config()->set('database.default', 'testing');
+  protected function getPackageProviders($app)
+  {
+    return [
+      VersioningServiceProvider::class,
+    ];
+  }
 
-        /*
+  public function getEnvironmentSetUp($app)
+  {
+    config()->set('database.default', 'testing');
+
+    /*
         $migration = include __DIR__.'/../database/migrations/create_versioning_table.php.stub';
         $migration->up();
         */
-    }
+  }
 }
