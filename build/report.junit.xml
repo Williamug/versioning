@@ -1,12 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="/home/williamdk/sites/versioning/phpunit.xml.dist" tests="2" assertions="4" errors="0" failures="0" skipped="0" time="0.310818">
-    <testsuite name="Williamug Test Suite" tests="2" assertions="4" errors="0" failures="0" skipped="0" time="0.310818">
-      <testsuite name="Tests\ExampleTest" file="tests/ExampleTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.210036">
-        <testcase name="it can test" file="tests/ExampleTest.php::it can test" class="Tests\ExampleTest" classname="Tests.ExampleTest" assertions="1" time="0.210036"/>
+  <testsuite name="/home/williamdk/sites/versioning/phpunit.xml.dist" tests="54" assertions="74" errors="0" failures="0" skipped="0" time="1.781491">
+    <testsuite name="Williamug Test Suite" tests="54" assertions="74" errors="0" failures="0" skipped="0" time="1.781491">
+      <testsuite name="Tests\StandaloneVersioningTest" file="tests/StandaloneVersioningTest.php" tests="13" assertions="16" errors="0" failures="0" skipped="0" time="1.282009">
+        <testcase name="it can get version tag" file="tests/StandaloneVersioningTest.php::it can get version tag" class="Tests\StandaloneVersioningTest" classname="Tests.StandaloneVersioningTest" assertions="1" time="0.152640"/>
+        <testcase name="it can clear cache" file="tests/StandaloneVersioningTest.php::it can clear cache" class="Tests\StandaloneVersioningTest" classname="Tests.StandaloneVersioningTest" assertions="1" time="0.007569"/>
+        <testcase name="it handles invalid repository path gracefully" file="tests/StandaloneVersioningTest.php::it handles invalid repository path gracefully" class="Tests\StandaloneVersioningTest" classname="Tests.StandaloneVersioningTest" assertions="1" time="0.006626"/>
+        <testcase name="it can get commit hash" file="tests/StandaloneVersioningTest.php::it can get commit hash" class="Tests\StandaloneVersioningTest" classname="Tests.StandaloneVersioningTest" assertions="1" time="0.006649"/>
+        <testcase name="it can get tag with commit" file="tests/StandaloneVersioningTest.php::it can get tag with commit" class="Tests\StandaloneVersioningTest" classname="Tests.StandaloneVersioningTest" assertions="1" time="0.006543"/>
+        <testcase name="it removes prefix when configured" file="tests/StandaloneVersioningTest.php::it removes prefix when configured" class="Tests\StandaloneVersioningTest" classname="Tests.StandaloneVersioningTest" assertions="1" time="0.006700"/>
+        <testcase name="it caches version when caching is enabled" file="tests/StandaloneVersioningTest.php::it caches version when caching is enabled" class="Tests\StandaloneVersioningTest" classname="Tests.StandaloneVersioningTest" assertions="1" time="0.006930"/>
+        <testcase name="it respects cache ttl" file="tests/StandaloneVersioningTest.php::it respects cache ttl" class="Tests\StandaloneVersioningTest" classname="Tests.StandaloneVersioningTest" assertions="1" time="1.007805"/>
+        <testcase name="it returns fallback version when git is not available" file="tests/StandaloneVersioningTest.php::it returns fallback version when git is not available" class="Tests\StandaloneVersioningTest" classname="Tests.StandaloneVersioningTest" assertions="1" time="0.017476"/>
+        <testcase name="it handles all version formats" file="tests/StandaloneVersioningTest.php::it handles all version formats" class="Tests\StandaloneVersioningTest" classname="Tests.StandaloneVersioningTest" assertions="4" time="0.016917"/>
+        <testcase name="it can get full version" file="tests/StandaloneVersioningTest.php::it can get full version" class="Tests\StandaloneVersioningTest" classname="Tests.StandaloneVersioningTest" assertions="1" time="0.016543"/>
+        <testcase name="it can configure repository path" file="tests/StandaloneVersioningTest.php::it can configure repository path" class="Tests\StandaloneVersioningTest" classname="Tests.StandaloneVersioningTest" assertions="1" time="0.017119"/>
+        <testcase name="it uses custom fallback version" file="tests/StandaloneVersioningTest.php::it uses custom fallback version" class="Tests\StandaloneVersioningTest" classname="Tests.StandaloneVersioningTest" assertions="1" time="0.012488"/>
       </testsuite>
-      <testsuite name="Tests\ArchTest" file="tests/ArchTest.php" tests="1" assertions="3" errors="0" failures="0" skipped="0" time="0.100782">
-        <testcase name="it will not use debugging functions" file="tests/ArchTest.php::it will not use debugging functions" class="Tests\ArchTest" classname="Tests.ArchTest" assertions="3" time="0.100782"/>
+      <testsuite name="Tests\BladeDirectivesTest" file="tests/BladeDirectivesTest.php" tests="7" assertions="7" errors="0" failures="0" skipped="0" time="0.074199">
+        <testcase name="it registers app_version blade directive" file="tests/BladeDirectivesTest.php::it registers app_version blade directive" class="Tests\BladeDirectivesTest" classname="Tests.BladeDirectivesTest" assertions="1" time="0.027195"/>
+        <testcase name="it app_version_full directive outputs correct php code" file="tests/BladeDirectivesTest.php::it app_version_full directive outputs correct php code" class="Tests\BladeDirectivesTest" classname="Tests.BladeDirectivesTest" assertions="1" time="0.009324"/>
+        <testcase name="it registers app_version_commit blade directive" file="tests/BladeDirectivesTest.php::it registers app_version_commit blade directive" class="Tests\BladeDirectivesTest" classname="Tests.BladeDirectivesTest" assertions="1" time="0.006705"/>
+        <testcase name="it registers app_version_full blade directive" file="tests/BladeDirectivesTest.php::it registers app_version_full blade directive" class="Tests\BladeDirectivesTest" classname="Tests.BladeDirectivesTest" assertions="1" time="0.006712"/>
+        <testcase name="it app_version_commit directive outputs correct php code" file="tests/BladeDirectivesTest.php::it app_version_commit directive outputs correct php code" class="Tests\BladeDirectivesTest" classname="Tests.BladeDirectivesTest" assertions="1" time="0.007626"/>
+        <testcase name="it app_version_tag directive outputs correct php code" file="tests/BladeDirectivesTest.php::it app_version_tag directive outputs correct php code" class="Tests\BladeDirectivesTest" classname="Tests.BladeDirectivesTest" assertions="1" time="0.009578"/>
+        <testcase name="it registers app_version_tag blade directive" file="tests/BladeDirectivesTest.php::it registers app_version_tag blade directive" class="Tests\BladeDirectivesTest" classname="Tests.BladeDirectivesTest" assertions="1" time="0.007059"/>
+      </testsuite>
+      <testsuite name="Tests\ExampleTest" file="tests/ExampleTest.php" tests="11" assertions="18" errors="0" failures="0" skipped="0" time="0.100657">
+        <testcase name="it uses custom fallback version from config" file="tests/ExampleTest.php::it uses custom fallback version from config" class="Tests\ExampleTest" classname="Tests.ExampleTest" assertions="1" time="0.014792"/>
+        <testcase name="it can get commit hash" file="tests/ExampleTest.php::it can get commit hash" class="Tests\ExampleTest" classname="Tests.ExampleTest" assertions="1" time="0.008759"/>
+        <testcase name="it caches version when cache is enabled" file="tests/ExampleTest.php::it caches version when cache is enabled" class="Tests\ExampleTest" classname="Tests.ExampleTest" assertions="3" time="0.017483"/>
+        <testcase name="it removes version prefix when configured" file="tests/ExampleTest.php::it removes version prefix when configured" class="Tests\ExampleTest" classname="Tests.ExampleTest" assertions="1" time="0.007310"/>
+        <testcase name="it can get version tag" file="tests/ExampleTest.php::it can get version tag" class="Tests\ExampleTest" classname="Tests.ExampleTest" assertions="1" time="0.007467"/>
+        <testcase name="it returns cached version when available" file="tests/ExampleTest.php::it returns cached version when available" class="Tests\ExampleTest" classname="Tests.ExampleTest" assertions="3" time="0.007318"/>
+        <testcase name="it can clear version cache" file="tests/ExampleTest.php::it can clear version cache" class="Tests\ExampleTest" classname="Tests.ExampleTest" assertions="4" time="0.007257"/>
+        <testcase name="it can get tag with commit" file="tests/ExampleTest.php::it can get tag with commit" class="Tests\ExampleTest" classname="Tests.ExampleTest" assertions="1" time="0.007180"/>
+        <testcase name="it returns fallback version when not in a git repository" file="tests/ExampleTest.php::it returns fallback version when not in a git repository" class="Tests\ExampleTest" classname="Tests.ExampleTest" assertions="1" time="0.006984"/>
+        <testcase name="it can get full version" file="tests/ExampleTest.php::it can get full version" class="Tests\ExampleTest" classname="Tests.ExampleTest" assertions="1" time="0.007197"/>
+        <testcase name="it returns fallback version when git is not available" file="tests/ExampleTest.php::it returns fallback version when git is not available" class="Tests\ExampleTest" classname="Tests.ExampleTest" assertions="1" time="0.008909"/>
+      </testsuite>
+      <testsuite name="Tests\UniversalVersioningTest" file="tests/UniversalVersioningTest.php" tests="17" assertions="23" errors="0" failures="0" skipped="0" time="0.144443">
+        <testcase name="it uses custom fallback version" file="tests/UniversalVersioningTest.php::it uses custom fallback version" class="Tests\UniversalVersioningTest" classname="Tests.UniversalVersioningTest" assertions="1" time="0.020513"/>
+        <testcase name="it returns fallback version when git is not available" file="tests/UniversalVersioningTest.php::it returns fallback version when git is not available" class="Tests\UniversalVersioningTest" classname="Tests.UniversalVersioningTest" assertions="1" time="0.006648"/>
+        <testcase name="it can get commit hash" file="tests/UniversalVersioningTest.php::it can get commit hash" class="Tests\UniversalVersioningTest" classname="Tests.UniversalVersioningTest" assertions="1" time="0.007236"/>
+        <testcase name="it can clear cache with psr-16 adapter" file="tests/UniversalVersioningTest.php::it can clear cache with psr-16 adapter" class="Tests\UniversalVersioningTest" classname="Tests.UniversalVersioningTest" assertions="4" time="0.007455"/>
+        <testcase name="it can get tag with commit" file="tests/UniversalVersioningTest.php::it can get tag with commit" class="Tests\UniversalVersioningTest" classname="Tests.UniversalVersioningTest" assertions="1" time="0.008946"/>
+        <testcase name="it handles all version formats" file="tests/UniversalVersioningTest.php::it handles all version formats" class="Tests\UniversalVersioningTest" classname="Tests.UniversalVersioningTest" assertions="4" time="0.007674"/>
+        <testcase name="it handles cache failures gracefully" file="tests/UniversalVersioningTest.php::it handles cache failures gracefully" class="Tests\UniversalVersioningTest" classname="Tests.UniversalVersioningTest" assertions="1" time="0.007309"/>
+        <testcase name="it works with psr-6 cache adapter" file="tests/UniversalVersioningTest.php::it works with psr-6 cache adapter" class="Tests\UniversalVersioningTest" classname="Tests.UniversalVersioningTest" assertions="1" time="0.007554"/>
+        <testcase name="it can get full version" file="tests/UniversalVersioningTest.php::it can get full version" class="Tests\UniversalVersioningTest" classname="Tests.UniversalVersioningTest" assertions="1" time="0.006978"/>
+        <testcase name="it removes prefix when configured" file="tests/UniversalVersioningTest.php::it removes prefix when configured" class="Tests\UniversalVersioningTest" classname="Tests.UniversalVersioningTest" assertions="1" time="0.006988"/>
+        <testcase name="it handles invalid repository path gracefully" file="tests/UniversalVersioningTest.php::it handles invalid repository path gracefully" class="Tests\UniversalVersioningTest" classname="Tests.UniversalVersioningTest" assertions="1" time="0.007282"/>
+        <testcase name="it can get version tag" file="tests/UniversalVersioningTest.php::it can get version tag" class="Tests\UniversalVersioningTest" classname="Tests.UniversalVersioningTest" assertions="1" time="0.007886"/>
+        <testcase name="it works with laravel-style cache" file="tests/UniversalVersioningTest.php::it works with laravel-style cache" class="Tests\UniversalVersioningTest" classname="Tests.UniversalVersioningTest" assertions="1" time="0.009344"/>
+        <testcase name="it can set custom cache ttl" file="tests/UniversalVersioningTest.php::it can set custom cache ttl" class="Tests\UniversalVersioningTest" classname="Tests.UniversalVersioningTest" assertions="1" time="0.007524"/>
+        <testcase name="it can configure repository path" file="tests/UniversalVersioningTest.php::it can configure repository path" class="Tests\UniversalVersioningTest" classname="Tests.UniversalVersioningTest" assertions="1" time="0.007644"/>
+        <testcase name="it works without cache adapter" file="tests/UniversalVersioningTest.php::it works without cache adapter" class="Tests\UniversalVersioningTest" classname="Tests.UniversalVersioningTest" assertions="1" time="0.010088"/>
+        <testcase name="it works with psr-16 cache adapter" file="tests/UniversalVersioningTest.php::it works with psr-16 cache adapter" class="Tests\UniversalVersioningTest" classname="Tests.UniversalVersioningTest" assertions="1" time="0.007375"/>
+      </testsuite>
+      <testsuite name="Tests\FunctionTest" file="tests/FunctionTest.php" tests="5" assertions="7" errors="0" failures="0" skipped="0" time="0.071754">
+        <testcase name="it app_version returns string" file="tests/FunctionTest.php::it app_version returns string" class="Tests\FunctionTest" classname="Tests.FunctionTest" assertions="1" time="0.028513"/>
+        <testcase name="it app_version returns dev as fallback" file="tests/FunctionTest.php::it app_version returns dev as fallback" class="Tests\FunctionTest" classname="Tests.FunctionTest" assertions="1" time="0.007226"/>
+        <testcase name="it app_version accepts format parameter" file="tests/FunctionTest.php::it app_version accepts format parameter" class="Tests\FunctionTest" classname="Tests.FunctionTest" assertions="3" time="0.017837"/>
+        <testcase name="it app_version function exists" file="tests/FunctionTest.php::it app_version function exists" class="Tests\FunctionTest" classname="Tests.FunctionTest" assertions="1" time="0.006837"/>
+        <testcase name="it app_version handles invalid format gracefully" file="tests/FunctionTest.php::it app_version handles invalid format gracefully" class="Tests\FunctionTest" classname="Tests.FunctionTest" assertions="1" time="0.011341"/>
+      </testsuite>
+      <testsuite name="Tests\ArchTest" file="tests/ArchTest.php" tests="1" assertions="3" errors="0" failures="0" skipped="0" time="0.108429">
+        <testcase name="it will not use debugging functions" file="tests/ArchTest.php::it will not use debugging functions" class="Tests\ArchTest" classname="Tests.ArchTest" assertions="3" time="0.108429"/>
       </testsuite>
     </testsuite>
   </testsuite>
