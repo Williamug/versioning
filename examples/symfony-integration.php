@@ -20,31 +20,31 @@ use Williamug\Versioning\UniversalVersioning;
 
 class VersioningService
 {
-  public function __construct(
-    private CacheInterface $cache,
-    private string $projectDir
-  ) {
-    // Configure the versioning system
-    UniversalVersioning::setRepositoryPath($this->projectDir);
-    UniversalVersioning::setCacheAdapter($this->cache);
-    UniversalVersioning::setFallbackVersion($_ENV['APP_VERSION'] ?? 'dev');
-    UniversalVersioning::setCacheTtl(3600);
-  }
+    public function __construct(
+        private CacheInterface $cache,
+        private string $projectDir
+    ) {
+        // Configure the versioning system
+        UniversalVersioning::setRepositoryPath($this->projectDir);
+        UniversalVersioning::setCacheAdapter($this->cache);
+        UniversalVersioning::setFallbackVersion($_ENV['APP_VERSION'] ?? 'dev');
+        UniversalVersioning::setCacheTtl(3600);
+    }
 
-  public function getVersion(): string
-  {
-    return UniversalVersioning::tag();
-  }
+    public function getVersion(): string
+    {
+        return UniversalVersioning::tag();
+    }
 
-  public function getFullVersion(): string
-  {
-    return UniversalVersioning::full();
-  }
+    public function getFullVersion(): string
+    {
+        return UniversalVersioning::full();
+    }
 
-  public function getCommit(): string
-  {
-    return UniversalVersioning::commit();
-  }
+    public function getCommit(): string
+    {
+        return UniversalVersioning::commit();
+    }
 }
 
 // In your controller:
