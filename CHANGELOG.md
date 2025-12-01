@@ -2,6 +2,42 @@
 
 All notable changes to `versioning` will be documented in this file.
 
+## v3.0.0 - 2025-12-01
+
+### Major Updates 🎉
+
+* **BREAKING**: Dropped PHP 8.1 support, now requires PHP 8.2+
+* **BREAKING**: Updated Laravel support to v10 and v11
+* Added comprehensive configuration file support
+* Added built-in caching mechanism for performance
+* Added multiple version format options (tag, full, commit, tag-commit)
+* Added proper error handling and security improvements
+* Added extensive test coverage with Pest
+* Added PHPStan for static analysis (level 8)
+* Added additional Blade directives (@app_version_tag, @app_version_full, @app_version_commit)
+* Added cache clearing functionality
+* Updated CI/CD workflow with separate jobs for tests, static analysis, and code style
+* Improved documentation with examples and troubleshooting
+* Security: Proper command sanitization using escapeshellarg
+* Security: Added fallback version support for non-git environments
+
+### New Features
+
+* `Versioning::full()` - Get full git describe output
+* `Versioning::commit()` - Get commit hash
+* `Versioning::tagWithCommit()` - Get tag with commit
+* `Versioning::clearCache()` - Clear version cache
+* Configuration file with extensive options
+* Environment variable support for fallback version
+* Configurable version prefix (v or no v)
+
+### Developer Experience
+
+* Added Larastan for Laravel-specific static analysis
+* Updated Pint to latest version
+* Added comprehensive test suite
+* Improved code quality and maintainability
+
 ## v2.0.3 - 2024-04-18
 
 ### What's Changed

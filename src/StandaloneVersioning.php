@@ -2,11 +2,57 @@
 
 namespace Williamug\Versioning;
 
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Config;
-
-class Versioning
+/**
+ * Standalone Versioning class for vanilla PHP
+ * No Laravel dependencies required
+ */
+class StandaloneVersioning
 {
+    protected static ?string $repositoryPath = null;
+
+    protected static array $cache = [];
+
+    protected static bool $cacheEnabled = true;
+
+    protected static int $cacheTtl = 3600;
+
+    protected static string $fallbackVersion = 'dev';
+
+    protected static bool $includePrefix = true;
+
+    /**
+     * Set repository path
+     */
+    public static function setRepositoryPath(string $path): void
+    {
+        self::$repositoryPath = $path;
+    }
+
+    /**
+     * Configure caching
+     */
+    public static function setCaching(bool $enabled, int $ttl = 3600): void
+    {
+        self::$cacheEnabled = $enabled;
+        self::$cacheTtl = $ttl;
+    }
+
+    /**
+     * Set fallback version
+     */
+    public static function setFallbackVersion(string $version): void
+    {
+        self::$fallbackVersion = $version;
+    }
+
+    /**
+     * Set whether to include 'v' prefix
+     */
+    public static function setIncludePrefix(bool $include): void
+    {
+        self::$includePrefix = $include;
+    }
+
     /**
      * Get the current version tag
      */
@@ -44,18 +90,24 @@ class Versioning
      */
     public static function getVersion(string $format = 'tag'): string
     {
-        $cacheEnabled = Config::get('versioning.cache.enabled', true);
-        $cacheKey = Config::get('versioning.cache.key', 'app_version')."_{$format}";
-        $cacheTtl = Config::get('versioning.cache.ttl', 3600);
+        $cacheKey = "version_{$format}";
 
-        if ($cacheEnabled && Cache::has($cacheKey)) {
-            return Cache::get($cacheKey);
+        // Check cache
+        if (self::$cacheEnabled && isset(self::$cache[$cacheKey])) {
+            $cached = self::$cache[$cacheKey];
+            if (time() - $cached['time'] < self::$cacheTtl) {
+                return $cached['value'];
+            }
         }
 
         $version = self::fetchVersion($format);
 
-        if ($cacheEnabled) {
-            Cache::put($cacheKey, $version, $cacheTtl);
+        // Store in cache
+        if (self::$cacheEnabled) {
+            self::$cache[$cacheKey] = [
+                'value' => $version,
+                'time' => time(),
+            ];
         }
 
         return $version;
@@ -67,11 +119,11 @@ class Versioning
     protected static function fetchVersion(string $format): string
     {
         try {
-            $repositoryPath = Config::get('versioning.repository_path', base_path());
+            $repositoryPath = self::$repositoryPath ?? getcwd();
 
             // Validate repository path exists and is accessible
             if (!is_dir($repositoryPath) || !is_dir($repositoryPath.'/.git')) {
-                return self::getFallbackVersion();
+                return self::$fallbackVersion;
             }
 
             $command = self::buildGitCommand($format, $repositoryPath);
@@ -82,19 +134,19 @@ class Versioning
             exec($command.' 2>&1', $output, $returnCode);
 
             if ($returnCode !== 0 || empty($output[0])) {
-                return self::getFallbackVersion();
+                return self::$fallbackVersion;
             }
 
             $version = trim($output[0]);
 
             // Remove 'v' prefix if configured
-            if (!Config::get('versioning.include_prefix', true)) {
+            if (!self::$includePrefix) {
                 $version = ltrim($version, 'v');
             }
 
             return $version;
         } catch (\Throwable $e) {
-            return self::getFallbackVersion();
+            return self::$fallbackVersion;
         }
     }
 
@@ -115,23 +167,10 @@ class Versioning
     }
 
     /**
-     * Get fallback version from config
-     */
-    protected static function getFallbackVersion(): string
-    {
-        return Config::get('versioning.fallback_version', 'dev');
-    }
-
-    /**
      * Clear version cache
      */
     public static function clearCache(): void
     {
-        $cacheKey = Config::get('versioning.cache.key', 'app_version');
-        $formats = ['tag', 'full', 'commit', 'tag-commit'];
-
-        foreach ($formats as $format) {
-            Cache::forget("{$cacheKey}_{$format}");
-        }
+        self::$cache = [];
     }
 }
