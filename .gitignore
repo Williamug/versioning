@@ -1,10 +1,13 @@
 .idea
 .phpunit.cache
 composer.lock
-coverage
-docs
+coverage/
+docs/
 phpunit.xml
+phpunit.xml.dist
 phpstan.neon
 testbench.yaml
-vendor
-node_modules
+vendor/
+node_modules/
+build/report.junit.xml
+coverage/
