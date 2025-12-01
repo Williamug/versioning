@@ -80,12 +80,14 @@ it('works with psr-16 cache adapter', function () {
     public function set($key, $value, $ttl = null)
     {
       $this->data[$key] = $value;
+
       return true;
     }
 
     public function delete($key)
     {
       unset($this->data[$key]);
+
       return true;
     }
   };
@@ -107,7 +109,9 @@ it('works with psr-6 cache adapter', function () {
     {
       return $this->items[$key] ?? new class($key) {
         private $key;
+
         private $value = null;
+
         private $hit = false;
 
         public function __construct($key)
@@ -124,6 +128,7 @@ it('works with psr-6 cache adapter', function () {
         {
           $this->value = $value;
           $this->hit = true;
+
           return $this;
         }
 
@@ -147,12 +152,14 @@ it('works with psr-6 cache adapter', function () {
     public function save($item)
     {
       $this->items[$item->getKey()] = $item;
+
       return true;
     }
 
     public function deleteItem($key)
     {
       unset($this->items[$key]);
+
       return true;
     }
   };
@@ -237,6 +244,7 @@ it('can clear cache with psr-16 adapter', function () {
     public function delete($key)
     {
       $this->deleted[] = $key;
+
       return true;
     }
   };
