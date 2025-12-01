@@ -8,7 +8,7 @@ use Williamug\Versioning\VersioningServiceProvider;
 
 class TestCase extends Orchestra
 {
-  protected static $latestResponse;
+  public static $latestResponse;
 
   protected function setUp(): void
   {
