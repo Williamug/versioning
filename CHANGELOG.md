@@ -2,6 +2,15 @@
 
 All notable changes to `versioning` will be documented in this file.
 
+## 3.0.1 - 2025-12-01
+
+### What's Changed
+
+* refactor: remove code formatters by @Williamug in https://github.com/Williamug/versioning/pull/15
+* refactor: remove code formatters by @Williamug in https://github.com/Williamug/versioning/pull/16
+
+**Full Changelog**: https://github.com/Williamug/versioning/compare/v3.0.0...3.0.1
+
 ## v3.0.0 - 2025-12-01
 
 ### Major Updates 🎉
