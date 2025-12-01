@@ -8,6 +8,8 @@ use Williamug\Versioning\VersioningServiceProvider;
 
 class TestCase extends Orchestra
 {
+    public static $latestResponse;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -29,8 +31,8 @@ class TestCase extends Orchestra
         config()->set('database.default', 'testing');
 
         /*
-        $migration = include __DIR__.'/../database/migrations/create_versioning_table.php.stub';
-        $migration->up();
-        */
+            $migration = include __DIR__.'/../database/migrations/create_versioning_table.php.stub';
+            $migration->up();
+            */
     }
 }
