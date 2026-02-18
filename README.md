@@ -5,33 +5,31 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/williamug/versioning.svg?style=flat-square)](https://packagist.org/packages/williamug/versioning)
 [![License](https://img.shields.io/packagist/l/williamug/versioning.svg?style=flat-square)](https://github.com/williamug/versioning/blob/master/LICENSE.md)
 
-A robust PHP package that helps you display your application's version by leveraging Git tags. Features include caching, multiple format options, error handling, and comprehensive framework integration.
+A robust PHP package that helps you display your application's version by leveraging Git tags. Features include caching, multiple format options, error handling, and support for both Laravel and vanilla PHP applications.
 
-**Works with ANY PHP framework or vanilla PHP!** Laravel, Symfony, CodeIgniter, CakePHP, Slim, and more.
+**Works with Laravel and vanilla PHP!**
 
 > **Quick Links:**
-> - **Which Class to Use?** [WHICH-CLASS.md](WHICH-CLASS.md) - Decision guide
-> - **Vanilla PHP**: [VANILLA-PHP-USAGE.md](VANILLA-PHP-USAGE.md) - Standalone usage
-> - **Framework Integration**: [FRAMEWORK-INTEGRATION.md](FRAMEWORK-INTEGRATION.md) - 8+ frameworks
-> - **Supported**: Laravel, Symfony, CodeIgniter, CakePHP, Slim, Yii2, Laminas, Phalcon
+> - **Vanilla PHP**: [VANILLA-PHP-USAGE.md](VANILLA-PHP-USAGE.md) - Standalone usage without Laravel
+> - **FTP Deployment**: [FTP-DEPLOYMENT.md](FTP-DEPLOYMENT.md) - Deploy via FTP without git
 
 ## Features
 
 - **Multiple Version Formats**: Tag, full, commit hash, or tag with commit
 - **Performance**: Built-in caching support to minimize Git command executions
 - **Secure**: Proper input sanitization and error handling
-- **Universal Integration**: Works with Laravel, Symfony, CodeIgniter, CakePHP, Slim, and more
+- **Laravel Integration**: Seamless integration with Laravel's facade and Blade directives
+- **Vanilla PHP Support**: Works standalone without any framework
 - **Configurable**: Extensive configuration options
-- **Cache Support**: PSR-6, PSR-16, and framework-specific caches
+- **FTP Deployment Support**: Works with deployments that don't include git history
 - **Well-tested**: Comprehensive test coverage
-- **Zero Dependencies**: Works standalone with vanilla PHP or any framework
 
 ## Requirements
 
 - PHP 8.2 or higher
-- Laravel 10.x, 11.x, or 12.x (for Laravel integration) or any PHP framework or vanilla PHP
+- Laravel 10.x, 11.x, or 12.x (for Laravel integration) or vanilla PHP
 - Git installed on your system
-- Optional: PSR-6 or PSR-16 compatible cache for caching
+- Optional: Laravel Cache for caching (automatically available in Laravel)
 
 ## Installation
 
@@ -107,30 +105,7 @@ echo StandaloneVersioning::tagWithCommit(); // v1.0.0-123abc
 StandaloneVersioning::clearCache();
 ```
 
-#### Option 3: Universal Framework Class (Works with Any Framework)
-
-```php
-use Williamug\Versioning\UniversalVersioning;
-
-// Configure with your framework's cache
-UniversalVersioning::setRepositoryPath(__DIR__);
-UniversalVersioning::setCacheAdapter($yourFrameworkCache); // PSR-6/PSR-16 compatible
-UniversalVersioning::setFallbackVersion('1.0.0');
-
-echo UniversalVersioning::tag(); // v1.0.0
-```
-
-### Other PHP Frameworks
-
-The package works seamlessly with **any PHP framework**! See **[FRAMEWORK-INTEGRATION.md](FRAMEWORK-INTEGRATION.md)** for detailed examples:
-
-- **Symfony** - Full integration with Symfony Cache
-- **CodeIgniter 4** - Library and helper examples
-- **CakePHP 5** - Component and helper integration
-- **Slim 4** - Middleware and DI container setup
-- **Yii2** - Component configuration
-- **Laminas** - Service manager integration
-- **Phalcon** - DI service registration
+See [VANILLA-PHP-USAGE.md](VANILLA-PHP-USAGE.md) for complete standalone usage guide.
 
 ### Laravel
 
