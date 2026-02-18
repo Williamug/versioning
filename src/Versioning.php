@@ -69,7 +69,13 @@ class Versioning
     try {
       $repositoryPath = Config::get('versioning.repository_path', base_path());
 
-      // First, try to read from version file (for FTP deployments)
+      // First, try to read from database (for FTP deployments with DB storage)
+      $versionFromDb = self::getVersionFromDatabase($format);
+      if ($versionFromDb !== null) {
+        return $versionFromDb;
+      }
+
+      // Second, try to read from version file (for FTP deployments)
       $versionFromFile = self::getVersionFromFile($format, $repositoryPath);
       if ($versionFromFile !== null) {
         return $versionFromFile;
@@ -148,6 +154,48 @@ class Versioning
     }
 
     return null;
+  }
+
+  /**
+   * Get version from database (for FTP deployments with DB storage)
+   */
+  protected static function getVersionFromDatabase(string $format): ?string
+  {
+    if (!Config::get('versioning.use_database', false)) {
+      return null;
+    }
+
+    try {
+      $model = Config::get('versioning.model', \Williamug\Versioning\Models\AppVersion::class);
+
+      if (!class_exists($model)) {
+        return null;
+      }
+
+      $current = $model::current();
+
+      if (!$current) {
+        return null;
+      }
+
+      $version = match ($format) {
+        'tag' => $current->version_tag,
+        'full' => $current->version_full ?? $current->version_tag,
+        'commit' => $current->commit_hash,
+        'tag-commit' => $current->version_tag && $current->commit_hash
+          ? $current->version_tag . '-' . $current->commit_hash
+          : $current->version_tag,
+        default => $current->version_tag,
+      };
+
+      if ($version && !Config::get('versioning.include_prefix', true)) {
+        $version = ltrim($version, 'v');
+      }
+
+      return $version;
+    } catch (\Throwable $e) {
+      return null;
+    }
   }
 
   /**

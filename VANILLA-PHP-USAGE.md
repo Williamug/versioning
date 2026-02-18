@@ -1,4 +1,4 @@
-# Vanilla PHP Quick Reference
+# Vanilla PHP Usage Guide
 
 This guide shows you how to use the Versioning package in vanilla PHP projects without Laravel.
 
@@ -10,7 +10,7 @@ composer require williamug/versioning
 
 ## Quick Start
 
-### Method 1: Simple Helper Function
+### Method 1: Simple Helper Function (Easiest)
 
 ```php
 <?php
@@ -20,7 +20,7 @@ echo app_version(); // v1.0.0
 ?>
 ```
 
-### Method 2: Full-Featured Class
+### Method 2: StandaloneVersioning Class (More Features)
 
 ```php
 <?php
