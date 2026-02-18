@@ -1,11 +1,13 @@
 {
   "name": "williamug/versioning",
-  "description": "A PHP package to helps you to display the version of your application by applying git version tags",
+  "description": "A PHP package that helps you display the version of your Laravel or vanilla PHP application by leveraging git version tags",
   "keywords": [
     "Williamug",
     "laravel",
     "PHP",
-    "versioning"
+    "versioning",
+    "git tags",
+    "version control"
   ],
   "homepage": "https://github.com/williamug/versioning",
   "license": "MIT",
