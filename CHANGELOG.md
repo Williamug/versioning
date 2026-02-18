@@ -2,6 +2,14 @@
 
 All notable changes to `versioning` will be documented in this file.
 
+## v3.1.0 - 2026-02-18
+
+### What's Changed
+
+* feat: Simplify package scope and add database versioning support by @Williamug in https://github.com/Williamug/versioning/pull/19
+
+**Full Changelog**: https://github.com/Williamug/versioning/compare/3.0.2...v3.1.0
+
 ## 3.0.1 - 2025-12-01
 
 ### What's Changed
