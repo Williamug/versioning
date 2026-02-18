@@ -29,7 +29,7 @@ A robust PHP package that helps you display your application's version by levera
 ## Requirements
 
 - PHP 8.2 or higher
-- Any PHP framework (Laravel, Symfony, CodeIgniter, etc.) or vanilla PHP
+- Laravel 10.x, 11.x, or 12.x (for Laravel integration) or any PHP framework or vanilla PHP
 - Git installed on your system
 - Optional: PSR-6 or PSR-16 compatible cache for caching
 
